@@ -27,95 +27,229 @@ html { font-size: 16px; scroll-behavior: smooth; }
 body { font-family: 'Karla', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
 
 /* Header */
-header { background: #B4C1A4; padding: 2.5rem 2rem 2rem; text-align: center; }
-header::after { content: ''; display: block; width: 60px; height: 1px; background: var(--ink); margin: 1.2rem auto 0; }
-.header-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.12em; color: var(--ink); }
-.header-sub { font-size: 0.75rem; letter-spacing: 0.18em; color: var(--ink2); text-transform: uppercase; margin-top: 0.4rem; }
+header {
+  background: #B4C1A4;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+}
+header::after {
+  content: ''; display: block;
+  width: 60px; height: 1px;
+  background: var(--ink);
+  margin: 1.2rem auto 0;
+}
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+.header-sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--ink2);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
 
 /* Layout */
 main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
 /* Filter bar */
-.filter-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-.filter-bar label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); }
-.filter-bar select { font-family: 'Karla', sans-serif; font-size: 0.875rem; color: var(--ink); background: var(--cream2); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.45rem 2rem 0.45rem 0.75rem; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a3f35' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.65rem center; cursor: pointer; }
+.filter-bar {
+  display: flex; align-items: center;
+  gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.filter-bar label {
+  font-size: 0.72rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink3);
+}
+.filter-bar select {
+  font-family: 'Karla', sans-serif; font-size: 0.875rem;
+  color: var(--ink); background: var(--cream2);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.45rem 2rem 0.45rem 0.75rem; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a3f35' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.65rem center; cursor: pointer;
+}
 .filter-bar select:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* Wine cards */
-.wine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2.5rem; }
-.wine-card { background: var(--cream); padding: 1.25rem 1.1rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; transition: background 0.15s; position: relative; }
+.wine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-bottom: 2.5rem;
+}
+.wine-card {
+  background: var(--cream); padding: 1.25rem 1.1rem 1rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  transition: background 0.15s; position: relative;
+}
 .wine-card:hover { background: var(--cream2); }
 .wine-card.selected { background: #fff8ee; }
-.wine-card.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
-.card-cor { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.2rem; }
+.wine-card.selected::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold);
+}
+.card-cor {
+  font-size: 0.65rem; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 500; margin-bottom: 0.2rem;
+}
 .cor-tinto  { color: var(--tinto); }
 .cor-branco { color: var(--branco); }
 .cor-rose   { color: var(--rose); }
 .cor-outro  { color: var(--ink3); }
-.card-regiao { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); }
+.card-regiao {
+  font-size: 0.65rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3);
+}
 .card-produtor { font-size: 0.72rem; color: var(--ink3); letter-spacing: 0.05em; }
-.card-vinho { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.3; color: var(--ink); }
-.card-preco { font-size: 0.875rem; color: var(--gold); font-weight: 500; margin-top: auto; padding-top: 0.6rem; }
+.card-vinho {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 400; line-height: 1.3; color: var(--ink);
+}
+.card-preco {
+  font-size: 0.875rem; color: var(--gold);
+  font-weight: 500; margin-top: auto; padding-top: 0.6rem;
+}
 .qty-row { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem; }
-.qty-btn { width: 28px; height: 28px; border: 1px solid var(--border); background: var(--cream2); border-radius: 50%; font-size: 1.1rem; cursor: pointer; color: var(--ink); display: flex; align-items: center; justify-content: center; transition: background 0.12s; }
+.qty-btn {
+  width: 28px; height: 28px; border: 1px solid var(--border);
+  background: var(--cream2); border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer; color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.12s;
+}
 .qty-btn:hover { background: var(--cream3); }
 .qty-num { font-size: 0.95rem; font-weight: 500; min-width: 22px; text-align: center; }
 
 /* State */
-.state-msg { grid-column: 1 / -1; padding: 3rem; text-align: center; color: var(--ink3); font-size: 0.9rem; letter-spacing: 0.04em; }
-.spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--cream3); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
+.state-msg {
+  grid-column: 1 / -1; padding: 3rem; text-align: center;
+  color: var(--ink3); font-size: 0.9rem; letter-spacing: 0.04em;
+}
+.spinner {
+  display: inline-block; width: 18px; height: 18px;
+  border: 2px solid var(--cream3); border-top-color: var(--gold);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+  vertical-align: middle; margin-right: 8px;
+}
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Order section */
 .order-section { display: none; margin-bottom: 2.5rem; }
 .order-section.visible { display: block; }
-.section-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.section-heading {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+  font-weight: 300; letter-spacing: 0.06em; color: var(--ink);
+  margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+}
 .order-items { margin-bottom: 0.5rem; }
-.order-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+.order-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem;
+}
 .order-row:last-child { border-bottom: none; }
 .order-row .label { color: var(--ink2); }
 .order-row .sub { color: var(--ink3); font-size: 0.8rem; }
-.order-total-row { display: flex; justify-content: space-between; padding: 0.9rem 0 0; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; letter-spacing: 0.04em; border-top: 1px solid var(--ink); margin-top: 0.4rem; }
+.order-total-row {
+  display: flex; justify-content: space-between; padding: 0.9rem 0 0;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;
+  letter-spacing: 0.04em; border-top: 1px solid var(--ink); margin-top: 0.4rem;
+}
 
 /* Form */
 .client-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; }
 .client-form .full { grid-column: 1 / -1; }
-.field-group label { display: block; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.35rem; }
+.field-group label {
+  display: block; font-size: 0.68rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 0.35rem;
+}
 .field-group label .req { color: var(--gold); }
-.field-group input, .field-group textarea { width: 100%; font-family: 'Karla', sans-serif; font-size: 0.9rem; color: var(--ink); background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 0.6rem 0.8rem; transition: border-color 0.15s; }
-.field-group input:focus, .field-group textarea:focus { outline: none; border-color: var(--gold); }
+.field-group input,
+.field-group textarea {
+  width: 100%; font-family: 'Karla', sans-serif; font-size: 0.9rem;
+  color: var(--ink); background: white; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 0.6rem 0.8rem; transition: border-color 0.15s;
+}
+.field-group input:focus,
+.field-group textarea:focus { outline: none; border-color: var(--gold); }
 .field-group input.error { border-color: var(--tinto); }
 .field-group textarea { resize: vertical; min-height: 80px; }
 
 /* Submit */
-.btn-submit { display: block; width: 100%; margin-top: 1.5rem; padding: 1rem; font-family: 'Karla', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; color: var(--cream); background: var(--ink); border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.18s; }
+.btn-submit {
+  display: block; width: 100%; margin-top: 1.5rem; padding: 1rem;
+  font-family: 'Karla', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em;
+  text-transform: uppercase; font-weight: 500; color: var(--cream);
+  background: var(--ink); border: none; border-radius: var(--radius);
+  cursor: pointer; transition: background 0.18s;
+}
 .btn-submit:hover:not(:disabled) { background: var(--ink2); }
 .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Success */
-#screen-success { display: none; text-align: center; padding: 4rem 1rem; animation: fadeIn 0.5s ease; }
+#screen-success {
+  display: none; text-align: center; padding: 4rem 1rem;
+  animation: fadeIn 0.5s ease;
+}
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 #screen-success.visible { display: block; }
 .success-mark { font-size: 2.5rem; margin-bottom: 1.2rem; }
-.success-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
-.success-sub { color: var(--ink3); font-size: 0.9rem; line-height: 1.7; max-width: 380px; margin: 0 auto 2rem; }
-.btn-new { font-family: 'Karla', sans-serif; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: 0.65rem 1.5rem; cursor: pointer; }
+.success-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 2rem;
+  font-weight: 300; letter-spacing: 0.08em; margin-bottom: 0.8rem;
+}
+.success-sub {
+  color: var(--ink3); font-size: 0.9rem; line-height: 1.7;
+  max-width: 380px; margin: 0 auto 2rem;
+}
+.btn-new {
+  font-family: 'Karla', sans-serif; font-size: 0.75rem;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink);
+  background: none; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.65rem 1.5rem; cursor: pointer;
+}
 .btn-new:hover { background: var(--cream2); }
 
 /* Error */
-.error-banner { display: none; background: #fdf2f2; border: 1px solid #f0c0c0; border-radius: var(--radius); padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--tinto); margin-bottom: 1.5rem; }
+.error-banner {
+  display: none; background: #fdf2f2; border: 1px solid #f0c0c0;
+  border-radius: var(--radius); padding: 0.75rem 1rem;
+  font-size: 0.875rem; color: var(--tinto); margin-bottom: 1.5rem;
+}
 .error-banner.visible { display: block; }
 
 /* Newsletter */
 .newsletter-row { margin: 1.25rem 0 0.5rem; }
-.newsletter-label { display: flex; align-items: center; gap: 0.65rem; cursor: pointer; user-select: none; width: fit-content; }
+.newsletter-label {
+  display: flex; align-items: center; gap: 0.65rem;
+  cursor: pointer; user-select: none; width: fit-content;
+}
 .newsletter-label input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-.newsletter-check-box { width: 18px; height: 18px; border: 1px solid var(--border); border-radius: 2px; background: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s, border-color 0.15s; }
+.newsletter-check-box {
+  width: 18px; height: 18px; border: 1px solid var(--border);
+  border-radius: 2px; background: white;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.15s, border-color 0.15s;
+}
 .newsletter-label input:checked ~ .newsletter-check-box { background: var(--ink); border-color: var(--ink); }
-.newsletter-label input:checked ~ .newsletter-check-box::after { content: ''; width: 10px; height: 6px; border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg) translateY(-1px); display: block; }
+.newsletter-label input:checked ~ .newsletter-check-box::after {
+  content: ''; width: 10px; height: 6px;
+  border-left: 2px solid white; border-bottom: 2px solid white;
+  transform: rotate(-45deg) translateY(-1px); display: block;
+}
 .newsletter-text { font-size: 0.875rem; color: var(--ink2); display: flex; align-items: center; gap: 0.5rem; }
-.newsletter-badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; background: #4a7c59; color: white; padding: 1px 6px; border-radius: 99px; }
-.discount-row { display: flex; justify-content: space-between; padding: 0.5rem 0; font-size: 0.875rem; color: #4a7c59; border-bottom: 1px solid var(--border); }
+.newsletter-badge {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
+  background: #4a7c59; color: white; padding: 1px 6px; border-radius: 99px;
+}
+.discount-row {
+  display: flex; justify-content: space-between; padding: 0.5rem 0;
+  font-size: 0.875rem; color: #4a7c59; border-bottom: 1px solid var(--border);
+}
 
 @media (max-width: 540px) {
   .client-form { grid-template-columns: 1fr; }
@@ -216,59 +350,45 @@ main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 </main>
 
 <script>
-// URL correto fornecido por ti
 const GAS_URL = "https://script.google.com/macros/s/AKfycbyU8uMb8g39c47T2dRHji4XWTgsgBypsrGgdQGOSLFk17Et_G3QRsFpg0sbBLJ9xYr-/exec";
 
 let todosProdutos = [];
 let cart = {};
 
-document.addEventListener('DOMContentLoaded', carregarProdutos);
+document.addEventListener('DOMContentLoaded', () => carregarProdutos());
 
 async function carregarProdutos() {
   try {
-    const res = await fetch(`${GAS_URL}?action=produtos`);
+    const res  = await fetch(`${GAS_URL}?action=produtos`);
     const data = await res.json();
     if (data.erro) throw new Error(data.erro);
-
-    // 1) Filtrar linhas em branco e garantir que o preço é sempre um número
-    // 2) Dar um ID único a cada produto para os filtros não baralharem o carrinho
-    todosProdutos = data.produtos
-      .filter(p => p.vinho && p.vinho.trim() !== '') 
-      .map((p, index) => {
-        return {
-          ...p,
-          idOriginal: index,
-          pvp: Number(p.pvp) || 0
-        };
-      });
-
+    todosProdutos = ordenarProdutos(data.produtos);
+    renderVinhos(todosProdutos);
     popularFiltros();
-    filtrarVinhos(); // Carrega os vinhos a primeira vez
   } catch (err) {
-    mostrarErro('Erro de ligação: Não foi possível ler a folha de cálculo. ' + err.message);
-    document.getElementById('wine-grid').innerHTML = '<div class="state-msg">Erro ao carregar o stock. Verifica se a Web App do Google está acessível.</div>';
+    mostrarErro('Não foi possível carregar os produtos: ' + err.message);
+    document.getElementById('wine-grid').innerHTML = '<div class="state-msg">Erro ao carregar o stock.</div>';
   }
 }
 
 function renderVinhos(lista) {
   const grid = document.getElementById('wine-grid');
-  if (!lista.length) { grid.innerHTML = '<div class="state-msg">Nenhum vinho encontrado.</div>'; return; }
-  
+  if (!lista.length) { grid.innerHTML = '<div class="state-msg">Nenhum vinho disponível.</div>'; return; }
   grid.innerHTML = lista.map(w => {
-    const qty = cart[w.idOriginal] || 0;
+    const idx      = todosProdutos.indexOf(w);
+    const qty      = cart[idx] || 0;
     const corClass = corParaClasse(w.cor);
-    
     return `
-      <div class="wine-card ${qty > 0 ? 'selected' : ''}" id="card-${w.idOriginal}">
-        ${w.cor ? `<div class="card-cor ${corClass}">${w.cor}</div>` : ''}
+      <div class="wine-card ${qty > 0 ? 'selected' : ''}" id="card-${idx}">
+        ${w.cor    ? `<div class="card-cor ${corClass}">${w.cor}</div>` : ''}
         ${w.regiao ? `<div class="card-regiao">${w.regiao}</div>` : ''}
-        <div class="card-produtor">${w.produtor || ''}</div>
+        <div class="card-produtor">${w.produtor}</div>
         <div class="card-vinho">${w.vinho}</div>
         <div class="card-preco">${w.pvp.toFixed(2)} €</div>
         <div class="qty-row">
-          <button class="qty-btn" onclick="alterarQty(${w.idOriginal}, -1)" aria-label="Remover">−</button>
-          <span class="qty-num" id="qty-${w.idOriginal}">${qty}</span>
-          <button class="qty-btn" onclick="alterarQty(${w.idOriginal}, 1)" aria-label="Adicionar">+</button>
+          <button class="qty-btn" onclick="alterarQty(${idx}, -1)" aria-label="Remover">−</button>
+          <span class="qty-num" id="qty-${idx}">${qty}</span>
+          <button class="qty-btn" onclick="alterarQty(${idx}, 1)" aria-label="Adicionar">+</button>
         </div>
       </div>`;
   }).join('');
@@ -276,65 +396,62 @@ function renderVinhos(lista) {
 
 function corParaClasse(cor) {
   const c = (cor || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  if (c.includes('tinto')) return 'cor-tinto';
+  if (c.includes('tinto'))  return 'cor-tinto';
   if (c.includes('branco')) return 'cor-branco';
-  if (c.includes('ros')) return 'cor-rose';
+  if (c.includes('ros'))    return 'cor-rose';
   return 'cor-outro';
 }
 
+function ordenarProdutos(lista) {
+  return [...lista].sort((a, b) => {
+    const r = (a.regiao || '').localeCompare(b.regiao || '', 'pt');
+    if (r !== 0) return r;
+    const p = a.produtor.localeCompare(b.produtor, 'pt');
+    return p !== 0 ? p : a.pvp - b.pvp;
+  });
+}
+
 function popularFiltros() {
-  const regioes = [...new Set(todosProdutos.map(w => w.regiao).filter(Boolean))].sort((a,b) => a.localeCompare(b,'pt'));
-  const produtores = [...new Set(todosProdutos.map(w => w.produtor).filter(Boolean))].sort((a,b) => a.localeCompare(b,'pt'));
+  const regioes   = [...new Set(todosProdutos.map(w => w.regiao).filter(Boolean))].sort((a,b) => a.localeCompare(b,'pt'));
+  const produtores = [...new Set(todosProdutos.map(w => w.produtor))].sort((a,b) => a.localeCompare(b,'pt'));
 
   const selR = document.getElementById('filter-regiao');
-  regioes.forEach(r => selR.add(new Option(r, r)));
+  regioes.forEach(r => { const o = document.createElement('option'); o.value = r; o.textContent = r; selR.appendChild(o); });
 
   const selP = document.getElementById('filter-produtor');
-  produtores.forEach(p => selP.add(new Option(p, p)));
+  produtores.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; selP.appendChild(o); });
 }
 
 function filtrarVinhos() {
-  const cor = document.getElementById('filter-cor').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  const reg = document.getElementById('filter-regiao').value;
+  const cor  = document.getElementById('filter-cor').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const reg  = document.getElementById('filter-regiao').value;
   const prod = document.getElementById('filter-produtor').value;
-  
   let f = todosProdutos;
   if (cor)  f = f.filter(w => (w.cor || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(cor));
   if (reg)  f = f.filter(w => w.regiao === reg);
   if (prod) f = f.filter(w => w.produtor === prod);
-  
-  f.sort((a, b) => {
-    const r = (a.regiao || '').localeCompare(b.regiao || '', 'pt');
-    if (r !== 0) return r;
-    const p = (a.produtor || '').localeCompare(b.produtor || '', 'pt');
-    return p !== 0 ? p : a.pvp - b.pvp;
-  });
-  
   renderVinhos(f);
 }
 
-function alterarQty(id, delta) {
-  const next = Math.max(0, (cart[id] || 0) + delta);
-  if (next === 0) delete cart[id]; else cart[id] = next;
-  
-  const qtyEl = document.getElementById('qty-' + id);
-  const cardEl = document.getElementById('card-' + id);
-  if (qtyEl) qtyEl.textContent = next;
+function alterarQty(idx, delta) {
+  const next = Math.max(0, (cart[idx] || 0) + delta);
+  if (next === 0) delete cart[idx]; else cart[idx] = next;
+  const qtyEl  = document.getElementById('qty-' + idx);
+  const cardEl = document.getElementById('card-' + idx);
+  if (qtyEl)  qtyEl.textContent = next;
   if (cardEl) cardEl.classList.toggle('selected', next > 0);
-  
   renderResumo();
 }
 
 function renderResumo() {
-  const keys = Object.keys(cart).filter(k => cart[k] > 0);
+  const keys    = Object.keys(cart).filter(k => cart[k] > 0);
   const section = document.getElementById('order-section');
-  
   if (!keys.length) { section.classList.remove('visible'); return; }
   section.classList.add('visible');
 
   let subtotal = 0;
   const html = keys.map(k => {
-    const w = todosProdutos.find(p => p.idOriginal == k);
+    const w   = todosProdutos[k];
     const sub = w.pvp * cart[k];
     subtotal += sub;
     return `<div class="order-row">
@@ -344,9 +461,9 @@ function renderResumo() {
   }).join('');
 
   const newsletter = document.getElementById('chk-newsletter')?.checked;
-  const desconto = newsletter ? subtotal * 0.10 : 0;
-  const total = subtotal - desconto;
-  const extraHtml = desconto > 0
+  const desconto   = newsletter ? subtotal * 0.10 : 0;
+  const total      = subtotal - desconto;
+  const extraHtml  = desconto > 0
     ? `<div class="discount-row"><span>Desconto newsletter (10%)</span><span>−${desconto.toFixed(2)} €</span></div>`
     : '';
 
@@ -356,9 +473,9 @@ function renderResumo() {
 
 async function enviarEncomenda() {
   esconderErro();
-  const nome = document.getElementById('cli-nome').value.trim();
+  const nome  = document.getElementById('cli-nome').value.trim();
   const email = document.getElementById('cli-email').value.trim();
-  const tel = document.getElementById('cli-tel').value.trim();
+  const tel   = document.getElementById('cli-tel').value.trim();
 
   let valido = true;
   ['cli-nome','cli-email','cli-tel'].forEach(id => {
@@ -366,7 +483,6 @@ async function enviarEncomenda() {
     el.classList.remove('error');
     if (!el.value.trim()) { el.classList.add('error'); valido = false; }
   });
-  
   if (!valido) { mostrarErro('Por favor preenche os campos obrigatórios (Nome, Email e Contacto).'); return; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     document.getElementById('cli-email').classList.add('error');
@@ -377,24 +493,26 @@ async function enviarEncomenda() {
   const keys = Object.keys(cart).filter(k => cart[k] > 0);
   if (!keys.length) { mostrarErro('Adiciona pelo menos um vinho.'); return; }
 
-  const itens = keys.map(k => {
-    const w = todosProdutos.find(p => p.idOriginal == k);
-    return {
-      regiao: w.regiao, produtor: w.produtor, vinho: w.vinho,
-      pvp: w.pvp, cor: w.cor, qty: cart[k]
-    };
-  });
+  const itens = keys.map(k => ({
+    regiao:   todosProdutos[k].regiao,
+    produtor: todosProdutos[k].produtor,
+    vinho:    todosProdutos[k].vinho,
+    pvp:      todosProdutos[k].pvp,
+    cor:      todosProdutos[k].cor,
+    qty:      cart[k],
+  }));
 
   const newsletter = document.getElementById('chk-newsletter')?.checked || false;
-  const subtotal = itens.reduce((s, i) => s + i.pvp * i.qty, 0);
-  const desconto = newsletter ? subtotal * 0.10 : 0;
+  const subtotal   = itens.reduce((s, i) => s + i.pvp * i.qty, 0);
+  const desconto   = newsletter ? subtotal * 0.10 : 0;
   const totalFinal = subtotal - desconto;
 
   const payload = {
-    action: 'encomenda', nome, email, telefone: tel,
-    nif: document.getElementById('cli-nif').value.trim(),
+    action: 'encomenda', nome, email,
+    telefone: tel,
+    nif:    document.getElementById('cli-nif').value.trim(),
     morada: document.getElementById('cli-morada').value.trim(),
-    notas: document.getElementById('cli-notas').value.trim(),
+    notas:  document.getElementById('cli-notas').value.trim(),
     newsletter, desconto: desconto.toFixed(2), total: totalFinal.toFixed(2), itens,
   };
 
@@ -402,7 +520,7 @@ async function enviarEncomenda() {
   btn.disabled = true; btn.textContent = 'A enviar…';
 
   try {
-    const res = await fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) });
+    const res  = await fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) });
     const data = await res.json();
     if (data.erro) throw new Error(data.erro);
     mostrarSucesso(nome, email);
@@ -429,11 +547,11 @@ function novaEncomenda() {
     document.getElementById(id).value = '';
     document.getElementById(id).classList.remove('error');
   });
-  document.getElementById('filter-cor').value = '';
+  document.getElementById('filter-cor').value    = '';
   document.getElementById('filter-regiao').value = '';
   document.getElementById('filter-produtor').value = '';
   document.getElementById('chk-newsletter').checked = false;
-  filtrarVinhos();
+  renderVinhos(todosProdutos);
   document.getElementById('order-section').classList.remove('visible');
 }
 
@@ -442,7 +560,9 @@ function mostrarErro(msg) {
   el.textContent = msg; el.classList.add('visible');
   el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-function esconderErro() { document.getElementById('error-banner').classList.remove('visible'); }
+function esconderErro() {
+  document.getElementById('error-banner').classList.remove('visible');
+}
 </script>
 </body>
 </html>
