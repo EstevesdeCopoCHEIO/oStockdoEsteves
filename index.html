@@ -188,42 +188,45 @@ document.addEventListener('DOMContentLoaded', carregarProdutos);
 
 async function carregarProdutos() {
   try {
-    const res = await fetch(`${GAS_URL}?action=produtos`);
+    const res  = await fetch(`${GAS_URL}?action=produtos`);
     const data = await res.json();
     if (data.erro) throw new Error(data.erro);
     
-    // Guardamos os produtos com um ID interno único baseado na posição original
-    todosProdutos = data.produtos.map((p, index) => ({...p, idOriginal: index}));
+    // NOVIDADE: Filtra as linhas vazias que não tenham o nome do vinho ou pvp
+    const produtosValidos = data.produtos.filter(p => p.vinho && p.pvp !== undefined && p.pvp !== '');
     
-    popularFiltros(todosProdutos);
+    todosProdutos = ordenarProdutos(produtosValidos);
     renderVinhos(todosProdutos);
+    popularFiltros();
   } catch (err) {
-    mostrarErro('Erro ao carregar produtos. Verifica se a Web App está ativa.');
-    console.error(err);
+    mostrarErro('Não foi possível carregar os produtos: ' + err.message);
+    document.getElementById('wine-grid').innerHTML = '<div class="state-msg">Erro ao carregar o stock.</div>';
   }
 }
 
 function renderVinhos(lista) {
   const grid = document.getElementById('wine-grid');
-  if (!lista.length) {
-    grid.innerHTML = '<div class="state-msg">Nenhum vinho encontrado com estes filtros.</div>';
-    return;
-  }
-
+  if (!lista.length) { grid.innerHTML = '<div class="state-msg">Nenhum vinho disponível.</div>'; return; }
+  
   grid.innerHTML = lista.map(w => {
-    const qty = cart[w.idOriginal] || 0;
+    const idx      = todosProdutos.indexOf(w);
+    const qty      = cart[idx] || 0;
     const corClass = corParaClasse(w.cor);
+    
+    // NOVIDADE: Garante que o pvp é lido como número para evitar o erro "toFixed"
+    const preco = Number(w.pvp) || 0; 
+    
     return `
-      <div class="wine-card ${qty > 0 ? 'selected' : ''}" id="card-${w.idOriginal}">
-        <div class="card-cor ${corClass}">${w.cor || ''}</div>
-        <div class="card-regiao">${w.regiao || ''}</div>
+      <div class="wine-card ${qty > 0 ? 'selected' : ''}" id="card-${idx}">
+        ${w.cor    ? `<div class="card-cor ${corClass}">${w.cor}</div>` : ''}
+        ${w.regiao ? `<div class="card-regiao">${w.regiao}</div>` : ''}
         <div class="card-produtor">${w.produtor}</div>
         <div class="card-vinho">${w.vinho}</div>
-        <div class="card-preco">${Number(w.pvp).toFixed(2)} €</div>
+        <div class="card-preco">${preco.toFixed(2)} €</div>
         <div class="qty-row">
-          <button class="qty-btn" onclick="alterarQty(${w.idOriginal}, -1)">−</button>
-          <span class="qty-num" id="qty-${w.idOriginal}">${qty}</span>
-          <button class="qty-btn" onclick="alterarQty(${w.idOriginal}, 1)">+</button>
+          <button class="qty-btn" onclick="alterarQty(${idx}, -1)" aria-label="Remover">−</button>
+          <span class="qty-num" id="qty-${idx}">${qty}</span>
+          <button class="qty-btn" onclick="alterarQty(${idx}, 1)" aria-label="Adicionar">+</button>
         </div>
       </div>`;
   }).join('');
